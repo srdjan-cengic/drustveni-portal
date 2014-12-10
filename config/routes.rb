@@ -53,4 +53,12 @@ DrustveniPortal::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+  root 'home#index'
+   resources :sessions, only: [:create]
+   resources :users, only: [:new, :create]
+
+  # Non-restful routes
+   get 'logout' => 'sessions#destroy', as: :log_out
 end

@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+	$('.btn-custom-search').click(function() {
+		$('.form-custom-search').removeClass("hidden");
+		$(this).addClass('hidden');
+	});
+});

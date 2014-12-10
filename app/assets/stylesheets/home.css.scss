@@ -1,0 +1,18 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.custom-pull-left {
+	float: left;
+	width: 69%;
+	margin-top: 2px;
+	padding: 6px 30px 5px 20px;
+	font-weight: bold;
+}
+
+.status {
+	width: 460px;
+	border-radius: 5px;
+	border: 1px solid #f0f0f0;
+	padding: 10px;
+}
