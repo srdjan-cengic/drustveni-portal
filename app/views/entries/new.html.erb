@@ -1,0 +1,26 @@
+<div class="col-md-8 col-md-offset-2">
+    <div id="append_form">
+        <%= form_for @entry, html: {role: 'form'} do |f| %>
+            <div class="form-group">
+            	<%= f.label :category_id, "Choose category: " %>
+            	<%= f.select :category_id, options_for_select([["Pictures", "1"], ["Quotes", "2"]]), {},
+                                           data: { remote: true, url: new_entry_path},  class: "form-control" %>
+            </div>
+
+        	<%= f.fields_for :storage do |storage| %>
+                <div class="form-group">
+                    <%= storage.label :title %>
+                    <%= storage.text_field :title, class: "form-control" %>
+                </div>
+                
+                <div id="change_content" class="form-group">
+                    <%= storage.label :content, "Input URL of the image" %>
+                    <%= storage.text_field :content, class: "form-control" %>
+                </div>
+            <% end %>
+
+            <%= f.hidden_field :user_id, :value => @entry.user_id %> <!--Now pass this to create action-->
+            <%= f.submit "Create new post", class: "btn btn-success" %>
+        <% end %>
+    </div>
+</div>
