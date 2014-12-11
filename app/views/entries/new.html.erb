@@ -2,12 +2,12 @@
     <div id="append_form">
         <%= form_for @entry, html: {role: 'form'} do |f| %>
             <div class="form-group">
-            	<%= f.label :category_id, "Choose category: " %>
-            	<%= f.select :category_id, options_for_select([["Pictures", "1"], ["Quotes", "2"]]), {},
+                <%= f.label :category_id, "Choose category: " %>
+                <%= f.select :category_id, options_for_select([["Pictures", "1"], ["Quotes", "2"]]), {},
                                            data: { remote: true, url: new_entry_path},  class: "form-control" %>
             </div>
 
-        	<%= f.fields_for :storage do |storage| %>
+            <%= f.fields_for :storage do |storage| %>
                 <div class="form-group">
                     <%= storage.label :title %>
                     <%= storage.text_field :title, class: "form-control" %>
