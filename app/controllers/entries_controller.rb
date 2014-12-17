@@ -2,9 +2,10 @@ class EntriesController < ApplicationController
   def new
   	@entry = Entry.new(user_id: current_user.id) #user_id kao atribut(kolona) entry-a
   	@entry.build_storage
+    @categories = Category.all.collect { |c| [c.category_name.capitalize, c.id] }
 
     respond_to do |format|
-      format.html { render partial: 'form' }
+      format.html
       format.js { 
         @id = params[:entry][:category_id]
       }
