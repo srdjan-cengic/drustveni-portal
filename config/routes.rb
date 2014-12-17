@@ -1,7 +1,7 @@
 DrustveniPortal::Application.routes.draw do
   root 'home#index'
   resources :sessions, only: [:create]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show, :destroy]
   resources :entries, only: [:new, :create]
 
   # Non-restful routes

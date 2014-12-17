@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
   	@user = User.new
   end
@@ -14,4 +15,23 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.present?
+      @user.destroy
+    end
+    redirect_to root_path
+  end
+
 end
