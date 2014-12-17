@@ -1,0 +1,11 @@
+<% if @vote_allowed %>
+	$('#<%= @content_holder %> .like_counter').html('<%= @storage.vote.count %>');
+<% else %>
+	var element = "<div class='alert alert-info alert-dismissable'>" +
+	"<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>" +
+	"&times;"+
+	"</button>" +
+	"You can vote only once per post."+
+	"</div>";
+	$(element).insertBefore('#<%= @content_holder %>').addClass('custom-pull-left');
+<% end %>

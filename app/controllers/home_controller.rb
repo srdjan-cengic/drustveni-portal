@@ -4,6 +4,9 @@ class HomeController < ApplicationController
   before_action :vote_logic, only: [:vote_up, :vote_down]
 
   def index
+    
+
+    @test = "srleeee";
   	@posts = User.joins(:entries => [{:storage => :vote}, :category])
                  .where("entries.status = ?", "A")
                  .select("users.username AS username,

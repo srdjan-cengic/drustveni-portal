@@ -12,7 +12,17 @@
 					<p class="status"> <%= post.content %> </p>
 				<% end %>
 
-				
+				<div id="likes_<%= post.storage_id %>">
+					<%= link_to "+1", vote_up_path(storage_id: post.storage_id), 
+									  class: "vote_up btn btn-success btn-default active", :remote => true %>
+
+					<%= link_to "-1", vote_down_path(storage_id: post.storage_id), 
+					                  class: "vote_down btn btn-danger btn-default active", :remote => true %>
+
+					<span class='like_counter'>
+						<%= post.votes %>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
