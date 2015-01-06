@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	belongs_to :user_role
 	has_many :entries
+	has_many :comments
 
 	before_save :encrypt_password #callback, another cool part of Active Record;
 

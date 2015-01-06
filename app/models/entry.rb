@@ -8,6 +8,7 @@ class Entry < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
 	has_one :storage
+	has_many :comments
 
 	accepts_nested_attributes_for :storage
 end
