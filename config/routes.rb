@@ -3,6 +3,7 @@ DrustveniPortal::Application.routes.draw do
   resources :sessions, only: [:create]
   resources :users, only: [:new, :create, :show, :destroy]
   resources :entries, only: [:new, :create]
+  resources :comments
 
   # Non-restful routes
   get 'vote_up/:storage_id' => 'home#vote_up', as: :vote_up
