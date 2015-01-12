@@ -50,3 +50,6 @@ gem 'bootstrap-sass', '~> 3.3.1'
 # Sprockets
 gem 'sprockets', '2.11.0'
 
+# Admin
+gem 'rails_admin'
+

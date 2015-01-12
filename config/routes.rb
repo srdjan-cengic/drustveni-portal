@@ -1,4 +1,5 @@
 DrustveniPortal::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   resources :sessions, only: [:create]
   resources :users, only: [:new, :create, :show, :destroy]
