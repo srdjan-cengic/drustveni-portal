@@ -1,0 +1,50 @@
+<% @posts.each do |post| %>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 center-content"> <!-- U odnosu na kontenjer -->
+			<div class="custom-fit">
+				<h3 class="post_title">
+					<%= post.title %>
+				</h3>
+
+				<% if post.category_name == "slike" %>
+					<%= image_tag(post.content, class: 'img-responsive') %>
+				<% else %>
+					<p class="status"> <%= post.content %> </p>
+				<% end %>
+		
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+		<hr>
+<% end %>
+
+
+
+<div class="comments">
+		<% @comments.each do |comment| -%>
+					<textarea rows="1" cols="100" readonly>
+					<%= comment.comment_text %>
+					</textarea> 
+					<% if comment.user_id == current_user.id %>
+						  <%= link_to 'Destroy', comment_path(comment),
+           						 :confirm => 'Are you sure?', class: "vote_down btn btn-danger btn-default active", :method => :delete %>
+					<% end %>
+					<p>Author:
+					<%= comment.user.username %>
+					</p>
+		<% end -%>
+
+		<%= form_tag("/comments", method: "post") do %>
+			  <%= text_area_tag(:comment_text,"", size: "100x2") %>
+			  <br>
+			  <%= hidden_field_tag(:user_id,current_user.id) %>
+			  <%= hidden_field_tag(:entry_id,params[:entry_id]) %>
+			  <br>
+			  <%= submit_tag "Add comment", class: "vote_down btn btn-info btn-default active" %>
+		<% end %>
+</div>
+<hr>
+<%= link_to "Back to homepage", root_path,class: "vote_down btn btn-danger btn-default active"%>

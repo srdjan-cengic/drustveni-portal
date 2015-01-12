@@ -2,10 +2,9 @@ class HomeController < ApplicationController
   
   #Filters are methods that are run before, after or "around" a controller action.
   before_action :vote_logic, only: [:vote_up, :vote_down]
-
+ 
   def index
     
-
     @test = "srleeee";
   	@posts = User.joins(:entries => [{:storage => :vote}, :category])
                  .where("entries.status = ?", "A")
@@ -14,10 +13,19 @@ class HomeController < ApplicationController
                          storages.title AS title, 
                          storages.content AS content, 
                          votes.count AS votes, 
+                         entries.id AS entries_id,
                          categories.category_name AS category_name")
                  .order("entries.created_at DESC")
+
+     @comments = Comment.joins(:entry,:user);
+     @comment = Comment.new
   end
 
+  def get_comment_count (entry_id)
+    @comment_count= Comment.where("entry_id = ?", entry_id).count;
+
+  end
+  helper_method :get_comment_count
   def vote_up
     if @vote_allowed
       @storage.vote.count += 1
