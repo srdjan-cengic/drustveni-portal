@@ -33,4 +33,13 @@ class CommentsController < ApplicationController
   		@comment = Comment.new
  	end
 
+  def destroy
+     @comment = Comment.find(params[:id])
+     @obrisanikomentar = @comment;
+    if  @comment.destroy
+        redirect_to comments_path(entry_id: @obrisanikomentar.entry_id), notice: "Successfuly deleted comment"
+    end
+
+  end 
+
 end

@@ -28,6 +28,10 @@
 					<textarea rows="1" cols="100" readonly>
 					<%= comment.comment_text %>
 					</textarea> 
+					<% if comment.user_id == current_user.id %>
+						  <%= link_to 'Destroy', comment_path(comment),
+           						 :confirm => 'Are you sure?', class: "vote_down btn btn-danger btn-default active", :method => :delete %>
+					<% end %>
 					<p>Author:
 					<%= comment.user.username %>
 					</p>
