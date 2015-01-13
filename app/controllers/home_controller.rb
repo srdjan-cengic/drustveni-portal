@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   before_action :vote_logic, only: [:vote_up, :vote_down]
  
   def index
-    
     @test = "srleeee";
   	@posts = User.joins(:entries => [{:storage => :vote}, :category])
                  .where("entries.status = ?", "A")
@@ -19,6 +18,7 @@ class HomeController < ApplicationController
 
      @comments = Comment.joins(:entry,:user);
      @comment = Comment.new
+     @filter= params;
   end
 
   def get_comment_count (entry_id)

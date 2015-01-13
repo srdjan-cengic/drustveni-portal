@@ -53,3 +53,6 @@ gem 'sprockets', '2.11.0'
 # Admin
 gem 'rails_admin'
 
+
+gem 'nokogiri'
+

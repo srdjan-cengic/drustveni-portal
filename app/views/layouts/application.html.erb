@@ -30,13 +30,13 @@
                     <b class="caret"></b>
                  <% end %>
                  <ul class="dropdown-menu">
+                  <li><%= link_to "Sve zajedno", "/" %></li>
                    <% get_categories.each do |category| %>
-                      <li><%= link_to category.capitalize, root_path %> </li>
+                      <li><%= link_to category.capitalize, filter_path(category) %> </li>
                    <% end %>
                  </ul>
               </li>
           </ul>
-
           
           <ul class="nav navbar-nav navbar-right">
            <% if current_user %>
