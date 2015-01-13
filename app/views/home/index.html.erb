@@ -6,7 +6,7 @@
 					<h3 class="post_title">
 						<%= post.title %>
 					</h3>
-						<%= image_tag(post.content, class: 'img-responsive') %>
+						<%= image_tag(post.content, class: 'img-responsive', width: '550') %>
 						<div id="likes_<%= post.storage_id %>">
 						<%= link_to "+1", vote_up_path(storage_id: post.storage_id), 
 										  class: "vote_up btn btn-success btn-default active", :remote => true %>
@@ -14,15 +14,14 @@
 						<%= link_to "-1", vote_down_path(storage_id: post.storage_id), 
 						                  class: "vote_down btn btn-danger btn-default active", :remote => true %>
 
-						
-						<span class='like_counter'>
-							<%= post.votes %>
-						</span>
+					
+							<span class="label label-info"> Total: <%= post.votes %> </span>
 						
 						<% if current_user %>
-						<%= link_to "comments "+ get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ), 
-						                  class: "btn btn-info pull-right" %>
+							<%= link_to "comments "+ get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ), 
+						                  class: "btn btn-info pull-left" %>
 						<% end %>
+						
 						</div>
 					</div>		
 			<% end %>
@@ -40,13 +39,12 @@
 						                  class: "vote_down btn btn-danger btn-default active", :remote => true %>
 
 						
-						<span class='like_counter'>
-							<%= post.votes %>
-						</span>
 						
+							<span class="label label-info"> Total: <%= post.votes %> </span>
+
 						<% if current_user %>
 						<%= link_to "comments "+ get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ), 
-						                  class: "btn btn-info pull-right" %>
+						                  class: "btn btn-info pull-left" %>
 						<% end %>
 					
 						</div>
@@ -58,7 +56,7 @@
 					<%= post.title %>
 					</h3>
 					<% if post.category_name == "slike" %>
-					<%= image_tag(post.content, class: 'img-responsive') %>
+						<%= image_tag(post.content, class: 'img-responsive', width: '550') %>
 					<% else %>
 					<p class="status"> <%= post.content %> </p>
 					<% end %>
@@ -67,12 +65,13 @@
 					class: "vote_up btn btn-success btn-default active", :remote => true %>
 					<%= link_to "-1", vote_down_path(storage_id: post.storage_id),
 					class: "vote_down btn btn-danger btn-default active", :remote => true %>
-					<span class='like_counter'>
-					<%= post.votes %>
-					</span>
-					<% if current_user %>
-					<%= link_to "comments "+ get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ),
-					class: "btn btn-info pull-right" %>
+						
+		
+							<span class="label label-info"> Total: <%= post.votes %> </span>
+
+							<% if current_user %>
+						<%= link_to "comments "+ get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ),
+						class: "btn btn-info pull-left" %>
 					<% end %>
 					</div>
 					
