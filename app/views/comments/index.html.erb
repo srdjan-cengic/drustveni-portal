@@ -11,40 +11,45 @@
 				<% else %>
 					<p class="status"> <%= post.content %> </p>
 				<% end %>
-		
-				</div>
+				
+				<hr>
+
+				<div class="comments">
+					<% @comments.each do |comment| -%>
+						<div class="media-body">
+                          	<div class="well well-lg">
+                              	<h4 class="media-heading text-uppercase reviews"><%= comment.user.username %></h4>
+
+								<p class="media-comment">
+		                            <%= comment.comment_text %>
+		                        </p>
+							
+								<% if comment.user_id == current_user.id %>
+									  <%= link_to 'Delete', comment_path(comment),
+			           						 :confirm => 'Are you sure?', class: "vote_down btn btn-danger", :method => :delete %>
+								<% end %>
+							</div>
+						</div>
+
+						<br>
+					<% end -%>
+
+					<%= form_tag("/comments", method: "post") do %>
+						  <%= text_area_tag(:comment_text,"", size: "75x2") %>
+						  <br>
+						  <%= hidden_field_tag(:user_id,current_user.id) %>
+						  <%= hidden_field_tag(:entry_id,params[:entry_id]) %>
+						  <br>
+						  <%= submit_tag "Add comment", class: "vote_down btn btn-success active" %>
+					<% end %>
 			</div>
-			
+			</div>
 		</div>
+			
 	</div>
-	
-		<hr>
 <% end %>
 
 
 
-<div class="comments">
-		<% @comments.each do |comment| -%>
-					<textarea rows="1" cols="100" readonly>
-					<%= comment.comment_text %>
-					</textarea> 
-					<% if comment.user_id == current_user.id %>
-						  <%= link_to 'Destroy', comment_path(comment),
-           						 :confirm => 'Are you sure?', class: "vote_down btn btn-danger btn-default active", :method => :delete %>
-					<% end %>
-					<p>Author:
-					<%= comment.user.username %>
-					</p>
-		<% end -%>
-
-		<%= form_tag("/comments", method: "post") do %>
-			  <%= text_area_tag(:comment_text,"", size: "100x2") %>
-			  <br>
-			  <%= hidden_field_tag(:user_id,current_user.id) %>
-			  <%= hidden_field_tag(:entry_id,params[:entry_id]) %>
-			  <br>
-			  <%= submit_tag "Add comment", class: "vote_down btn btn-info btn-default active" %>
-		<% end %>
-</div>
 <hr>
-<%= link_to "Back to homepage", root_path,class: "vote_down btn btn-danger btn-default active"%>
+<%= link_to "Back to homepage", root_path, class: "vote_down btn btn-default" %>
