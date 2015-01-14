@@ -9,20 +9,20 @@
 						<%= image_tag(post.content, class: 'img-responsive', width: '550') %>
 						<div id="likes_<%= post.storage_id %>">
 						<%= link_to "", vote_up_path(storage_id: post.storage_id), 
-										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-info btn-default active", :remote => true %>
+										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-success btn-default active", :remote => true %>
 
 						<%= link_to "", vote_down_path(storage_id: post.storage_id), 
-						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-info btn-default active", :remote => true %>
+						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-danger btn-default active", :remote => true %>
 
 					
-							<span class="label label-info"> Total: <%= post.votes %> </span>
+							<span class="label label-warning"> Total: <%= post.votes %> </span>
 						
 	
 						
 						</div>
 							<% if current_user %>
 							<%= link_to " " + get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ),
-						class: "glyphicon glyphicon-comment btn btn-info pull-left active", id:"commentss" %>
+						class: "glyphicon glyphicon-comment btn btn-default pull-left active", id:"commentss" %>
 
 						<% end %>
 					</div>		
@@ -36,21 +36,22 @@
 						<%= post.content %>
 						<div id="likes_<%= post.storage_id %>">
 						<%= link_to "", vote_up_path(storage_id: post.storage_id), 
-										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-info btn-default active", :remote => true %>
+										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-success btn-default active", :remote => true %>
 
 						<%= link_to "", vote_down_path(storage_id: post.storage_id), 
-						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-info btn-default active", :remote => true %>
+						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-danger btn-default active", :remote => true %>
+
 
 						
 						
-							<span class="label label-info"> Total: <%= post.votes %> </span>
+							<span class="label label-warning"> Total: <%= post.votes %> </span>
 
 					
 					
 						</div>
 							<% if current_user %>
 								<%= link_to " " + get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ),
-						class: "glyphicon glyphicon-comment btn btn-info pull-left active", id:"commentss" %>
+						class: "glyphicon glyphicon-comment btn btn-default pull-left active", id:"commentss" %>
 						<% end %>
 				</div>		
 			<%end%>
@@ -66,16 +67,17 @@
 					<% end %>
 					<div id="likes_<%= post.storage_id %>">
 					<%= link_to "", vote_up_path(storage_id: post.storage_id), 
-										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-info btn-default active", :remote => true %>
+										  class: "glyphicon glyphicon-chevron-up vote_up btn btn-success btn-default active", :remote => true %>
 
 						<%= link_to "", vote_down_path(storage_id: post.storage_id), 
-						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-info btn-default active", :remote => true %>
+						                  class: "glyphicon glyphicon-chevron-down vote_down btn btn-danger btn-default active", :remote => true %>
+
 		
-							<span class="label label-info"> Total: <%= post.votes %> </span>
+							<span class="label label-warning"> Total: <%= post.votes %> </span>
 					</div>
 						<% if current_user %>
 						<%= link_to " " + get_comment_count(post.entries_id).to_s , comments_path(entry_id: post.entries_id ),
-						class: "glyphicon glyphicon-comment btn btn-info pull-left active", id:"commentss" %>
+						class: "glyphicon glyphicon-comment btn btn-default pull-left active", id:"commentss" %>
 					<% end %>
 				</div>
 
