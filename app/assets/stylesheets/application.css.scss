@@ -35,6 +35,7 @@ div[id*="likes"] {
 .custom-fit {
 	display: inline-block;
 	text-align: left;
+	width:550px;
 }
 div[id*="likes"]:last-child {
 	font: 16px Tahoma;
@@ -56,4 +57,11 @@ div[id*="likes"]:last-child {
 .custom-signed {
 	text-decoration: underline;
 	color: blue;
+}
+h3 {
+	text-align: center;
+}
+#commentss {
+	margin:3px;
+	margin-left:0;
 }
